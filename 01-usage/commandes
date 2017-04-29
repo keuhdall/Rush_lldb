@@ -1,0 +1,13 @@
+b main
+r
+b -l 16
+b -l 19 -o
+b -l 32 -c 'tmp=min[0]+min[1]+min[2]'
+b -l 44 -c 'biggest=(min[0]>min[1]?min[0]:min[1])>min[2]?(min[0]>min[1]?min[0]:min[1]):min[2]'
+c
+exp $rsi -= 4
+c
+c
+exp $rsi += 4
+c
+exp count=0
