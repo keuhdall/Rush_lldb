@@ -1,13 +1,13 @@
-b main
-r
-b -l 16
-b -l 19 -o
-b -l 32 -c 'tmp=min[0]+min[1]+min[2]'
-b -l 44 -c 'biggest=(min[0]>min[1]?min[0]:min[1])>min[2]?(min[0]>min[1]?min[0]:min[1]):min[2]'
-c
-exp $rsi -= 4
-c
-c
-exp $rsi += 4
-c
-exp count=0
+breakpoint set --name main
+process launch
+breakpoint set -l 16
+breakpoint set -l 19 -o
+breakpoint set -l 32 -c 'tmp=min[0]+min[1]+min[2]'
+breakpoint set -l 44 -c 'biggest=(min[0]>min[1]?min[0]:min[1])>min[2]?(min[0]>min[1]?min[0]:min[1]):min[2]'
+continue
+expression -- $rsi -= 4
+continue
+continue
+expression -- $rsi += 4
+continue
+expression -- count=0
